@@ -199,7 +199,7 @@ const Contact = () => {
         <p className="text-slate-400">
           © 2024 Kashyap Parmar. Built with React, TypeScript & Tailwind CSS.
         </p>
-      </div>
+      </footer>
     </section>
   );
 };
