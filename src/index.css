@@ -1,165 +1,113 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Design system — "AI lab" dark terminal aesthetic.
+ * Ink navy surfaces, signal-mint accent, mono metadata + humanist body type.
+ */
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --radius: 0.25rem;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --font-body: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono-stack: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --background: oklch(0.155 0.014 255);
+    --foreground: oklch(0.965 0.004 250);
+    --surface: oklch(0.192 0.016 255);
+    --surface-raised: oklch(0.232 0.018 255);
+    --card: oklch(0.192 0.016 255);
+    --card-foreground: oklch(0.965 0.004 250);
+    --popover: oklch(0.192 0.016 255);
+    --popover-foreground: oklch(0.965 0.004 250);
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --signal: oklch(0.83 0.155 168);
+    --signal-soft: oklch(0.83 0.155 168 / 12%);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --primary: oklch(0.83 0.155 168);
+    --primary-foreground: oklch(0.17 0.02 200);
+    --secondary: oklch(0.232 0.018 255);
+    --secondary-foreground: oklch(0.965 0.004 250);
+    --muted: oklch(0.232 0.018 255);
+    --muted-foreground: oklch(0.705 0.018 255);
+    --accent: oklch(0.232 0.018 255);
+    --accent-foreground: oklch(0.83 0.155 168);
+    --destructive: oklch(0.62 0.2 25);
+    --destructive-foreground: oklch(0.98 0.004 250);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 14%);
+    --ring: oklch(0.83 0.155 168 / 55%);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: oklch(0.155 0.014 255);
+    --sidebar-foreground: oklch(0.965 0.004 250);
+    --sidebar-primary: oklch(0.83 0.155 168);
+    --sidebar-primary-foreground: oklch(0.17 0.02 200);
+    --sidebar-accent: oklch(0.232 0.018 255);
+    --sidebar-accent-foreground: oklch(0.83 0.155 168);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.83 0.155 168 / 55%);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    color-scheme: dark;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: oklch(0.83 0.155 168 / 30%);
   }
 }
 
-/* Custom scroll bar */
-::-webkit-scrollbar {
-  width: 8px;
+@layer utilities {
+  .mono-label {
+    font-family: var(--font-mono-stack);
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .grid-backdrop {
+    background-image:
+      linear-gradient(to right, oklch(1 0 0 / 4%) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 4%) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .glow-signal {
+    box-shadow:
+      0 0 0 1px oklch(0.83 0.155 168 / 25%),
+      0 18px 60px -24px oklch(0.83 0.155 168 / 45%);
+  }
+
+  .animate-rise {
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-slate-800;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-slate-600 rounded-lg;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-500;
-}
-
-/* Smooth scrolling for the entire page */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom animations */
-@keyframes fade-in {
+@keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.8s ease-out;
-}
-
-/* Gradient text effect */
-.gradient-text {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Hover effects */
-.hover-scale {
-  transition: transform 0.2s ease-in-out;
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
-}
-
-/* Focus styles for accessibility */
-input:focus,
-textarea:focus,
-button:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
 }
